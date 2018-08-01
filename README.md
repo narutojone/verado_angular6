@@ -7,4 +7,4 @@
 1. Clone this starter kit
 1. `npm install`
 1. `npm start`
-1. Navigate to `http://localhost:4200` to see your app in action.
+1. Navigate to `http://localhost:8080` to see your app in action.
