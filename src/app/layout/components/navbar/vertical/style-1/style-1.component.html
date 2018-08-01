@@ -1,0 +1,31 @@
+<div class="navbar-top mat-indigo-700-bg">
+
+    <div class="logo">
+        <img class="logo-icon" src="assets/images/logos/verado.svg">
+        <span class="logo-text secondary-text">Chat System</span>
+    </div>
+
+    <div class="buttons">
+
+        <button mat-icon-button class="toggle-sidebar-folded"
+                (click)="toggleSidebarFolded()" fxHide.lt-lg>
+            <mat-icon class="secondary-text">menu</mat-icon>
+        </button>
+
+        <button mat-icon-button class="toggle-sidebar-opened"
+                (click)="toggleSidebarOpened()" fxHide.gt-md>
+            <mat-icon class="secondary-text">arrow_back</mat-icon>
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="navbar-scroll-container" veradoPerfectScrollbar [veradoPerfectScrollbarOptions]="{suppressScrollX: true}">
+
+    <div class="navbar-content">
+        <verado-navigation layout="vertical"></verado-navigation>
+    </div>
+
+</div>

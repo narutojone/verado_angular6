@@ -1,0 +1,32 @@
+<div class="nav" [ngClass]="{'horizontal':layout === 'horizontal', 'vertical':layout === 'vertical'}">
+
+    <!-- Vertical Navigation Layout -->
+    <ng-container *ngIf="layout === 'vertical'">
+
+        <ng-container *ngFor="let item of navigation">
+
+            <verado-nav-vertical-group *ngIf="item.type=='group'" [item]="item"></verado-nav-vertical-group>
+            <verado-nav-vertical-collapsable *ngIf="item.type=='collapse'" [item]="item"></verado-nav-vertical-collapsable>
+            <verado-nav-vertical-item *ngIf="item.type=='item'" [item]="item"></verado-nav-vertical-item>
+
+        </ng-container>
+
+    </ng-container>
+    <!-- / Vertical Navigation Layout -->
+
+    <!-- Horizontal Navigation Layout -->
+    <ng-container *ngIf="layout === 'horizontal'">
+
+        <ng-container *ngFor="let item of navigation">
+
+            <verado-nav-horizontal-collapsable *ngIf="item.type=='group'" [item]="item"></verado-nav-horizontal-collapsable>
+            <verado-nav-horizontal-collapsable *ngIf="item.type=='collapse'"
+                                             [item]="item"></verado-nav-horizontal-collapsable>
+            <verado-nav-horizontal-item *ngIf="item.type=='item'" [item]="item"></verado-nav-horizontal-item>
+
+        </ng-container>
+
+    </ng-container>
+    <!-- / Horizontal Navigation Layout -->
+
+</div>

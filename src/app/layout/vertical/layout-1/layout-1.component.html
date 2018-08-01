@@ -1,0 +1,110 @@
+<div id="main">
+
+    <!-- TOOLBAR: Above -->
+    <ng-container *ngIf="veradoConfig.layout.toolbar.position === 'above'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above -->
+
+    <div id="container-1" class="container">
+
+        <!-- NAVBAR: Left -->
+        <ng-container *ngIf="veradoConfig.layout.navbar.position === 'left'">
+            <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Left -->
+
+        <div id="container-2" class="container">
+
+            <!-- TOOLBAR: Below fixed -->
+            <ng-container *ngIf="veradoConfig.layout.toolbar.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+            </ng-container>
+            <!-- / TOOLBAR: Below fixed -->
+
+            <div id="container-3" class="container" veradoPerfectScrollbar
+                 [veradoPerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+                <!-- TOOLBAR: Below static -->
+                <ng-container *ngIf="veradoConfig.layout.toolbar.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+                </ng-container>
+                <!-- / TOOLBAR: Below static -->
+
+                <!-- CONTENT -->
+                <content></content>
+                <!-- / CONTENT -->
+
+                <!-- FOOTER: Below static -->
+                <ng-container *ngIf="veradoConfig.layout.footer.position === 'below-static'">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
+                </ng-container>
+                <!-- / FOOTER: Below static -->
+
+            </div>
+
+            <!-- FOOTER: Below fixed -->
+            <ng-container *ngIf="veradoConfig.layout.footer.position === 'below-fixed'">
+                <ng-container *ngTemplateOutlet="footer"></ng-container>
+            </ng-container>
+            <!-- / FOOTER: Below fixed -->
+
+        </div>
+
+        <!-- NAVBAR: Right -->
+        <ng-container *ngIf="veradoConfig.layout.navbar.position === 'right'">
+            <ng-container *ngTemplateOutlet="rightNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Right -->
+
+    </div>
+
+    <!-- FOOTER: Above -->
+    <ng-container *ngIf="veradoConfig.layout.footer.position === 'above'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+    </ng-container>
+    <!-- FOOTER: Above -->
+
+</div>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!veradoConfig.layout.toolbar.hidden"
+             [ngClass]="[veradoConfig.layout.toolbar.position, veradoConfig.layout.toolbar.background]"></toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+    <footer *ngIf="!veradoConfig.layout.footer.hidden"
+            [ngClass]="[veradoConfig.layout.footer.position, veradoConfig.layout.footer.background]"></footer>
+</ng-template>
+<!-- / FOOTER -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+    <verado-sidebar name="navbar" class="navbar-verado-sidebar"
+                  [folded]="veradoConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!veradoConfig.layout.navbar.hidden">
+        <navbar [variant]="veradoConfig.layout.navbar.variant"
+                class="left-navbar" [ngClass]="veradoConfig.layout.navbar.background"></navbar>
+    </verado-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->
+
+<!-- RIGHT NAVBAR -->
+<ng-template #rightNavbar>
+    <verado-sidebar name="navbar" position="right" class="navbar-verado-sidebar"
+                  [folded]="veradoConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!veradoConfig.layout.navbar.hidden">
+        <navbar [variant]="veradoConfig.layout.navbar.variant"
+                class="right-navbar" [ngClass]="veradoConfig.layout.navbar.background"></navbar>
+    </verado-sidebar>
+</ng-template>
+<!-- / RIGHT NAVBAR -->
